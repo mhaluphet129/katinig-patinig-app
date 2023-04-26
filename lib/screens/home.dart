@@ -49,6 +49,19 @@ class _HomePage extends State<HomePage> {
               fontSize: 20,
               height: 70,
               borderRadius: 10,
+              onPress: () {
+                showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return const Center(
+                      child: Text(
+                        'Developer: Kit Symmon Kessey L. Rojas',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    );
+                  },
+                );
+              },
             )
           ],
         ),

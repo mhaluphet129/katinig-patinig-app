@@ -7,9 +7,9 @@ import 'package:katinig_patinig_app/screens/selectedLetter.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final args = settings.arguments;
-    print(settings.name);
+
     switch (settings.name) {
-      case '/home':
+      case '/':
         return MaterialPageRoute(builder: (_) => HomePage());
       case '/katinig':
         return MaterialPageRoute(builder: (_) => Katinig());
@@ -25,9 +25,9 @@ class RouteGenerator {
 
   static Route<dynamic> _error404() {
     return MaterialPageRoute(builder: (context) {
-      return const Scaffold(
-        body: Center(
-          child: Text('Please press back again to confirm exit.'),
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Error in the App.'),
         ),
       );
     });

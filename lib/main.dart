@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       title: 'KATINIG-PATINIG APP',
       scrollBehavior: NoThumbScrollBehavior().copyWith(scrollbars: false),
       debugShowCheckedModeBanner: false,
-      initialRoute: '/home',
+      initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

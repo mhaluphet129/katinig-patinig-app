@@ -62,9 +62,12 @@ class _SelectedLetter extends State<SelectedLetter> {
               itemCount: list.length,
               itemBuilder: (BuildContext context, int index) {
                 return Button(
-                  label: list[index],
+                  label: ttsState == 'playing' && selectedIndex == index
+                      ? ""
+                      : list[index],
                   rightIcon: Icons.volume_up_rounded,
-                  rightIconSize: 30,
+                  rightIconSize:
+                      ttsState == 'playing' && selectedIndex == index ? 50 : 30,
                   textColor: Colors.black,
                   backgroundColor:
                       ttsState == 'playing' && selectedIndex == index
