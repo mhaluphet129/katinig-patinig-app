@@ -3,7 +3,7 @@
 *.log
 *.pyc
 *.swp
-.DS_Storepa
+.DS_Store
 .atom/
 .buildlog/
 .history
