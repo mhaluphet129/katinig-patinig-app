@@ -65,14 +65,17 @@ class _SelectedLetter extends State<SelectedLetter> {
                   label: ttsState == 'playing' && selectedIndex == index
                       ? ""
                       : list[index],
-                  rightIcon: Icons.volume_up_rounded,
                   rightIconSize:
                       ttsState == 'playing' && selectedIndex == index ? 50 : 30,
-                  textColor: Colors.black,
                   backgroundColor:
                       ttsState == 'playing' && selectedIndex == index
                           ? Colors.grey
                           : Colors.grey.withOpacity(0.35),
+                  imagePath: ttsState == 'playing' && selectedIndex == index
+                      ? '${widget.arguments['letter']}/${list[index]}.png'
+                      : null,
+                  rightIcon: Icons.volume_up_rounded,
+                  textColor: Colors.black,
                   fontSize: 30,
                   margin: const EdgeInsets.all(10),
                   height: 70,

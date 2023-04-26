@@ -19,8 +19,7 @@ class Button extends StatelessWidget {
   double? width;
   double? rightIconSize;
   MainAxisAlignment? mainAxisAlignment;
-  AnimatedIcon? animatedIcon;
-  AnimationController? animController;
+  String? imagePath;
 
   Button(
       {Key? key,
@@ -42,8 +41,7 @@ class Button extends StatelessWidget {
       this.height,
       this.width,
       this.rightIconSize,
-      this.animatedIcon,
-      this.animController})
+      this.imagePath})
       : super(key: key);
 
   @override
@@ -78,6 +76,12 @@ class Button extends StatelessWidget {
                 mainAxisAlignment:
                     mainAxisAlignment ?? MainAxisAlignment.center,
                 children: [
+                  if (imagePath != null)
+                    Image.asset(
+                      'assets/images/$imagePath',
+                      height: 40,
+                      fit: BoxFit.fill,
+                    ),
                   Text(label,
                       textAlign: TextAlign.left,
                       style: TextStyle(
@@ -94,12 +98,6 @@ class Button extends StatelessWidget {
                         size: rightIconSize,
                       ),
                     ),
-                  if (animatedIcon != null)
-                    Padding(
-                        padding: const EdgeInsets.only(left: 5),
-                        child: AnimatedIcon(
-                            icon: AnimatedIcons.play_pause,
-                            progress: animController!)),
                 ],
               ),
             ),

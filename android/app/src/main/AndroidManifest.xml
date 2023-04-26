@@ -6,7 +6,7 @@
         </intent>
     </queries>
    <application
-        android:label="KATINIG PATINIG APP"
+        android:label="Pagbasa sa Marungko"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

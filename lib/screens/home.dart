@@ -53,12 +53,49 @@ class _HomePage extends State<HomePage> {
                 showModalBottomSheet(
                   context: context,
                   builder: (context) {
-                    return const Center(
-                      child: Text(
-                        'Developer: Kit Symmon Kessey L. Rojas',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    );
+                    return Center(
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                          Image.asset(
+                            'assets/images/random/app_logo.png',
+                            height: 120,
+                            fit: BoxFit.fill,
+                          ),
+                          const Text('Pagbasa sa Marungko',
+                              style: TextStyle(
+                                  fontSize: 20, fontWeight: FontWeight.w900)),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          const Text('Developer',
+                              style: TextStyle(fontSize: 20)),
+                          const Text(
+                            'Kit Symmon Kessey L. Rojas',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w900),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text('Image Referece',
+                              style: TextStyle(fontSize: 20)),
+                          const Text(
+                            'https://www.flaticon.com',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w900),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const Text('Version', style: TextStyle(fontSize: 20)),
+                          const Text(
+                            '1.0',
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.w900),
+                          ),
+                        ]));
                   },
                 );
               },

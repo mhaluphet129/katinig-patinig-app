@@ -3,7 +3,7 @@
 *.log
 *.pyc
 *.swp
-.DS_Store
+.DS_Storepa
 .atom/
 .buildlog/
 .history
@@ -32,6 +32,8 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Web related
+
 # Symbolication related
 app.*.symbols
 
@@ -42,3 +44,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+dotenv
+
+package-lock.json
+**/node_modules
