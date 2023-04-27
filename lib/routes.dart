@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:katinig_patinig_app/screens/home.dart';
 import 'package:katinig_patinig_app/screens/katinig.dart';
+import 'package:katinig_patinig_app/screens/letter_container.dart';
 import 'package:katinig_patinig_app/screens/patinig.dart';
 import 'package:katinig_patinig_app/screens/selectedLetter.dart';
 
@@ -18,6 +19,9 @@ class RouteGenerator {
       case '/selected-letter':
         return MaterialPageRoute(
             builder: (_) => SelectedLetter(arguments: args as Map));
+      case '/letter-container':
+        return MaterialPageRoute(
+            builder: (_) => LetterContainer(arguments: args as Map));
       default:
         return _error404();
     }

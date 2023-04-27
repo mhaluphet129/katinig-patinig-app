@@ -25,6 +25,9 @@ class MyApp extends StatelessWidget {
       scrollBehavior: NoThumbScrollBehavior().copyWith(scrollbars: false),
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
+      theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xFFFFFDD0),
+          fontFamily: 'Comic'),
       onGenerateRoute: RouteGenerator.generateRoute,
     );
   }

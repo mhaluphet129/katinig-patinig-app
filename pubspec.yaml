@@ -28,7 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  audioplayers: 0.13.2
+  audioplayers: ^4.0.1
   flutter_tts: ^3.6.3
   flutter:
     sdk: flutter
@@ -81,6 +81,32 @@ flutter:
     - assets/images/Y/
     - assets/images/Z/
     - assets/images/random/
+    - assets/audio/A/
+    - assets/audio/E/
+    - assets/audio/I/
+    - assets/audio/O/
+    - assets/audio/U/
+    - assets/audio/B/
+    - assets/audio/D/
+    - assets/audio/G/
+    - assets/audio/H/
+    - assets/audio/J/
+    - assets/audio/K/
+    - assets/audio/L/
+    - assets/audio/M/
+    - assets/audio/N/
+    - assets/audio/P/
+    - assets/audio/R/
+    - assets/audio/S/
+    - assets/audio/T/
+    - assets/audio/W/
+    - assets/audio/Y/
+    - assets/audio/Z/
+  fonts:
+    - family: Comic
+      fonts:
+        - asset: assets/fonts/comic.ttf
+        - asset: assets/fonts/comic_bold.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
