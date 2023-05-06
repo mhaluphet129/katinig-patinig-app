@@ -46,6 +46,8 @@ class _LetterContainer extends State<LetterContainer>
   @override
   Widget build(BuildContext context) {
     String iconPath = widget.arguments['imagePath'];
+    String label = widget.arguments['label'];
+    String letter = widget.arguments['letter'];
 
     return Scaffold(
       body: SizedBox(
@@ -54,6 +56,28 @@ class _LetterContainer extends State<LetterContainer>
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              RichText(
+                  text: TextSpan(children: [
+                WidgetSpan(
+                    child: Hero(
+                  tag: letter,
+                  child: Material(
+                      color: Colors.transparent,
+                      child: Text(label[0],
+                          style: const TextStyle(
+                              color: Colors.black,
+                              decoration: TextDecoration.underline,
+                              fontSize: 40))),
+                )),
+                WidgetSpan(
+                    child: Text(
+                  label.substring(1),
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 40,
+                  ),
+                ))
+              ])),
               Image.asset(
                 'assets/images/$iconPath',
                 height: 120,
@@ -68,6 +92,8 @@ class _LetterContainer extends State<LetterContainer>
                     borderRadius: BorderRadius.circular(10)),
                 child: GestureDetector(
                   onTap: () {
+                    print(
+                        'audio/${widget.arguments['letter']}/${widget.arguments['label'].toString().toLowerCase()}.m4a');
                     player.stop();
                     player.play(AssetSource(
                         'audio/${widget.arguments['letter']}/${widget.arguments['label'].toString().toLowerCase()}.m4a'));
