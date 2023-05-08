@@ -20,6 +20,7 @@ class Button extends StatelessWidget {
   FontWeight? fontWeight;
   Border? border;
   Color? splashColor;
+  List<Shadow>? shadow;
 
   Button(
       {Key? key,
@@ -41,7 +42,8 @@ class Button extends StatelessWidget {
       this.imagePath,
       this.fontWeight,
       this.border,
-      this.splashColor})
+      this.splashColor,
+      this.shadow})
       : super(key: key);
 
   @override
@@ -75,11 +77,11 @@ class Button extends StatelessWidget {
               child: Text(label,
                   textAlign: TextAlign.left,
                   style: TextStyle(
-                    fontSize: fontSize ?? 14,
-                    letterSpacing: 0.27,
-                    color: textColor ?? Colors.white,
-                    fontWeight: fontWeight,
-                  )),
+                      fontSize: fontSize ?? 14,
+                      letterSpacing: 0.27,
+                      color: textColor ?? Colors.white,
+                      fontWeight: fontWeight,
+                      shadows: shadow)),
             ),
           ),
         ),

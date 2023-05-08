@@ -36,6 +36,12 @@ class _Katinig extends State<Katinig> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            const Text('Katinig', style: TextStyle(fontSize: 25)),
+            const Text('sa', style: TextStyle(fontSize: 25)),
+            const Text('Alpabetong Filipino ', style: TextStyle(fontSize: 25)),
+            const SizedBox(
+              height: 50,
+            ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
               child: Wrap(

@@ -36,9 +36,11 @@ class _Patinig extends State<Patinig> with TickerProviderStateMixin {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text('PATINIG', style: TextStyle(fontSize: 35)),
+            const Text('Patinig', style: TextStyle(fontSize: 25)),
+            const Text('sa', style: TextStyle(fontSize: 25)),
+            const Text('Alpabetong Filipino', style: TextStyle(fontSize: 25)),
             const SizedBox(
-              height: 100,
+              height: 80,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,

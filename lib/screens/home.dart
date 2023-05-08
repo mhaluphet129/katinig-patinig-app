@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> with TickerProviderStateMixin {
-  final Color textColor = const Color.fromARGB(255, 2, 157, 155);
+  final Color textColor = const Color(0xFFDBAD3F);
   final Offset shadowOffset = const Offset(2.0, 2.0);
   final double strokeWidth = 2;
   int selectedIndex = -1;
@@ -92,12 +92,12 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
                             fontSize: 40,
                             height: 1,
                             fontWeight: FontWeight.w900,
-                            color: const Color(0xFFDBAD3F),
+                            color: textColor,
                             shadows: [
                               Shadow(
                                 offset: shadowOffset,
                                 blurRadius: 3.0,
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: const Color.fromARGB(255, 0, 0, 0),
                               ),
                               Shadow(
                                 offset: shadowOffset,
@@ -112,12 +112,12 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
                         height: 1,
                         fontSize: 20,
                         fontWeight: FontWeight.w900,
-                        color: const Color(0xFFDBAD3F),
+                        color: textColor,
                         shadows: [
                           Shadow(
                             offset: shadowOffset,
                             blurRadius: 3.0,
-                            color: Color.fromARGB(255, 0, 0, 0),
+                            color: const Color.fromARGB(255, 0, 0, 0),
                           ),
                           Shadow(
                             offset: shadowOffset,
@@ -144,7 +144,7 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
                             fontSize: 40,
                             height: 1,
                             fontWeight: FontWeight.w900,
-                            color: const Color(0xFFDBAD3F),
+                            color: textColor,
                             shadows: [
                               Shadow(
                                 offset: shadowOffset,
@@ -181,6 +181,18 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
                       fontWeight: FontWeight.w700,
                       border: Border.all(color: textColor, width: 3.0),
                       splashColor: textColor,
+                      shadow: [
+                        Shadow(
+                          offset: shadowOffset,
+                          blurRadius: 3.0,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        Shadow(
+                          offset: shadowOffset,
+                          blurRadius: 8.0,
+                          color: const Color.fromARGB(125, 0, 0, 255),
+                        ),
+                      ],
                       onPress: () {
                         setState(() {
                           selectedIndex = 0;
@@ -208,6 +220,18 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
                       border: Border.all(color: textColor, width: 3.0),
                       fontWeight: FontWeight.w700,
                       splashColor: textColor,
+                      shadow: [
+                        Shadow(
+                          offset: shadowOffset,
+                          blurRadius: 3.0,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        Shadow(
+                          offset: shadowOffset,
+                          blurRadius: 8.0,
+                          color: const Color.fromARGB(125, 0, 0, 255),
+                        ),
+                      ],
                       onPress: () {
                         setState(() {
                           selectedIndex = 1;
@@ -235,6 +259,18 @@ class _HomePage extends State<HomePage> with TickerProviderStateMixin {
                       fontWeight: FontWeight.w700,
                       border: Border.all(color: textColor, width: 3.0),
                       splashColor: textColor,
+                      shadow: [
+                        Shadow(
+                          offset: shadowOffset,
+                          blurRadius: 3.0,
+                          color: const Color.fromARGB(255, 0, 0, 0),
+                        ),
+                        Shadow(
+                          offset: shadowOffset,
+                          blurRadius: 8.0,
+                          color: const Color.fromARGB(125, 0, 0, 255),
+                        ),
+                      ],
                       onPress: () {
                         setState(() {
                           selectedIndex = 2;
