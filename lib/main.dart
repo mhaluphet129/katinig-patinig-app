@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
       theme: ThemeData(
-          scaffoldBackgroundColor: const Color(0xFFFF7377),
+          scaffoldBackgroundColor: const Color(0xFF00FFFF),
           fontFamily: 'Comic'),
       onGenerateRoute: RouteGenerator.generateRoute,
     );
