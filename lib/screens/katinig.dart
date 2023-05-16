@@ -1,6 +1,9 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:katinig_patinig_app/widgets/button.dart';
 import "package:katinig_patinig_app/utils/constant.dart";
+
+AudioPlayer player = AudioPlayer();
 
 class Katinig extends StatefulWidget {
   Katinig({Key? key}) : super(key: key);
@@ -12,6 +15,8 @@ class Katinig extends StatefulWidget {
 class _Katinig extends State<Katinig> with TickerProviderStateMixin {
   double _scaleTransformValue = 1;
   late final AnimationController animationController;
+  List<AnimationController>? _animationController;
+  int selectedIndex = -1;
 
   @override
   void initState() {
@@ -23,6 +28,14 @@ class _Katinig extends State<Katinig> with TickerProviderStateMixin {
     )..addListener(() {
         setState(() => _scaleTransformValue = 1 - animationController.value);
       });
+    _animationController = katinig
+        .map((x) => AnimationController(
+            vsync: this, duration: const Duration(milliseconds: 450)))
+        .toList();
+
+    player.onPlayerComplete.listen((e) {
+      _animationController![selectedIndex].reverse();
+    });
     super.initState();
   }
 
@@ -49,23 +62,70 @@ class _Katinig extends State<Katinig> with TickerProviderStateMixin {
                 spacing: 20,
                 alignment: WrapAlignment.center,
                 children: List.generate(katinig.length, (index) {
-                  return Hero(
-                      tag: katinig[index],
-                      child: Container(
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20)),
-                          width: 70,
-                          height: 50,
-                          child: Button(
-                            label: katinig[index],
-                            textColor: Colors.black,
-                            backgroundColor: Colors.grey.withOpacity(0.35),
-                            fontSize: 30,
-                            onPress: () {
-                              Navigator.pushNamed(context, '/selected-letter',
-                                  arguments: {"letter": katinig[index]});
-                            },
-                          )));
+                  return SizedBox(
+                      width: 120,
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Hero(
+                                tag: katinig[index],
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    width: 70,
+                                    height: 50,
+                                    child: Button(
+                                      label: katinig[index],
+                                      textColor: Colors.black,
+                                      backgroundColor:
+                                          Colors.grey.withOpacity(0.35),
+                                      fontSize: 30,
+                                      onPress: () {
+                                        Navigator.pushNamed(
+                                            context, '/selected-letter',
+                                            arguments: {
+                                              "letter": katinig[index]
+                                            });
+                                      },
+                                    ))),
+                            Container(
+                                decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.black, width: 1.0),
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: MouseRegion(
+                                  cursor: SystemMouseCursors.click,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      if (selectedIndex != -1) {
+                                        _animationController![selectedIndex]
+                                            .reset();
+                                      }
+                                      setState(() {
+                                        selectedIndex = index;
+                                      });
+
+                                      if (index == selectedIndex) {
+                                        _animationController![index].forward();
+                                      }
+
+                                      player.stop();
+                                      print(
+                                          'audio/KATINIG/${katinig[index].toUpperCase()}.m4a');
+                                      player.play(AssetSource(
+                                          'audio/KATINIG/${katinig[index].toUpperCase()}.m4a'));
+
+                                      // tts.speak(widget.arguments['label']);
+                                    },
+                                    child: AnimatedIcon(
+                                      size: 45,
+                                      icon: AnimatedIcons.play_pause,
+                                      progress: _animationController![index],
+                                    ),
+                                  ),
+                                )),
+                          ]));
                 }),
               ),
             ),

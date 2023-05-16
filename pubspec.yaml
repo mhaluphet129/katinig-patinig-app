@@ -102,6 +102,8 @@ flutter:
     - assets/audio/W/
     - assets/audio/Y/
     - assets/audio/Z/
+    - assets/audio/PATINIG/
+    - assets/audio/KATINIG/
   fonts:
     - family: Comic
       fonts:
