@@ -65,9 +65,7 @@ class _LetterContainer extends State<LetterContainer>
                       color: Colors.transparent,
                       child: Text(label[0],
                           style: const TextStyle(
-                              color: Colors.black,
-                              decoration: TextDecoration.underline,
-                              fontSize: 40))),
+                              color: Colors.black, fontSize: 50))),
                 )),
                 WidgetSpan(
                     child: Text(
@@ -78,11 +76,12 @@ class _LetterContainer extends State<LetterContainer>
                   ),
                 ))
               ])),
-              Image.asset(
-                'assets/images/$iconPath',
-                height: 120,
-                fit: BoxFit.fill,
-              ),
+              if (!["A", "E", "I", "O", "U"].contains(label[0]))
+                Image.asset(
+                  'assets/images/$iconPath',
+                  height: 120,
+                  fit: BoxFit.fill,
+                ),
               const SizedBox(
                 height: 30,
               ),
