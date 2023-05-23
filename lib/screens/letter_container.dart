@@ -125,6 +125,7 @@ class _LetterContainer extends State<LetterContainer>
                         splashColor: const Color.fromARGB(255, 2, 157, 155),
                         borderRadius: BorderRadius.circular(1000.0),
                         onTap: () {
+                          player.stop();
                           Navigator.pop(context);
                         },
                         child: const Padding(

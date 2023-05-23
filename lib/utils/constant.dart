@@ -44,8 +44,7 @@ Map<String, String> katinigList = {
 
 Map<String, String> patinigList = {
   "A": "Aso Araw Ate Aklat Apoy Ahas Alon Anak Asin Asul Asukal Anghel Atis",
-  "E":
-      "Eskuwela Elepante Eroplano Elektrisidad Estudyante Espada Edad Ehersisyo Emosyon Entablado",
+  "E": "Espada Edad Eksit Elepante Ekis Enero Espesyal Eroplano",
   "I": "Isda Itlog Ibon Ilog Ilaw Ikaw Igloo Ilaw Insekto Ihip",
   "O": "Oso Oras Oktagon Ospital Okra Oktubre Okasyon Orkestra Obal Oben",
   "U": "Ubas Ulap Ulan Uling Upuan Unan Utak Ulo Umaga Ukit"
