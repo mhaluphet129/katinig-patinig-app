@@ -43,7 +43,7 @@ class _Katinig extends State<Katinig> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Padding(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(top: 20),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,7 +53,7 @@ class _Katinig extends State<Katinig> with TickerProviderStateMixin {
             const Text('sa', style: TextStyle(fontSize: 25)),
             const Text('Alpabetong Filipino ', style: TextStyle(fontSize: 25)),
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * 0.8,
@@ -98,23 +98,41 @@ class _Katinig extends State<Katinig> with TickerProviderStateMixin {
                                   cursor: SystemMouseCursors.click,
                                   child: GestureDetector(
                                     onTap: () {
-                                      if (selectedIndex != -1) {
-                                        _animationController![selectedIndex]
-                                            .reset();
-                                      }
-                                      setState(() {
-                                        selectedIndex = index;
-                                      });
-
-                                      if (index == selectedIndex) {
+                                      if (selectedIndex == index) {
+                                        if (player.state ==
+                                            PlayerState.playing) {
+                                          player.stop();
+                                          _animationController![index]
+                                              .reverse();
+                                          return;
+                                        }
                                         _animationController![index].forward();
-                                      }
+                                        player.play(AssetSource(
+                                            'audio/KATINIG/${katinig[index].toUpperCase()}.m4a'));
+                                      } else {
+                                        if (selectedIndex != -1) {
+                                          _animationController![selectedIndex]
+                                              .reset();
+                                        }
+                                        setState(() {
+                                          selectedIndex = index;
+                                        });
 
-                                      player.stop();
-                                      print(
-                                          'audio/KATINIG/${katinig[index].toUpperCase()}.m4a');
-                                      player.play(AssetSource(
-                                          'audio/KATINIG/${katinig[index].toUpperCase()}.m4a'));
+                                        if (index == selectedIndex) {
+                                          _animationController![index]
+                                              .forward();
+                                        }
+
+                                        player.stop();
+                                        player = AudioPlayer()
+                                          ..onPlayerComplete.listen((e) {
+                                            _animationController![selectedIndex]
+                                                .reverse();
+                                          });
+
+                                        player.play(AssetSource(
+                                            'audio/KATINIG/${katinig[index].toUpperCase()}.m4a'));
+                                      }
 
                                       // tts.speak(widget.arguments['label']);
                                     },

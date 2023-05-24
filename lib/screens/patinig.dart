@@ -97,23 +97,38 @@ class _Patinig extends State<Patinig> with TickerProviderStateMixin {
                                 cursor: SystemMouseCursors.click,
                                 child: GestureDetector(
                                   onTap: () {
-                                    if (selectedIndex != -1) {
-                                      _animationController![selectedIndex]
-                                          .reset();
-                                    }
-                                    setState(() {
-                                      selectedIndex = index;
-                                    });
-
-                                    if (index == selectedIndex) {
+                                    if (selectedIndex == index) {
+                                      if (player.state == PlayerState.playing) {
+                                        player.stop();
+                                        _animationController![index].reverse();
+                                        return;
+                                      }
                                       _animationController![index].forward();
-                                    }
+                                      player.play(AssetSource(
+                                          'audio/PATINIG/${patinig[index].toUpperCase()}.m4a'));
+                                    } else {
+                                      if (selectedIndex != -1) {
+                                        _animationController![selectedIndex]
+                                            .reset();
+                                      }
+                                      setState(() {
+                                        selectedIndex = index;
+                                      });
 
-                                    player.stop();
-                                    print(
-                                        'audio/PATINIG/${patinig[index].toUpperCase()}.m4a');
-                                    player.play(AssetSource(
-                                        'audio/PATINIG/${patinig[index].toUpperCase()}.m4a'));
+                                      if (index == selectedIndex) {
+                                        _animationController![index].forward();
+                                      }
+
+                                      player.stop();
+                                      player = AudioPlayer()
+                                        ..onPlayerComplete.listen((e) {
+                                          _animationController![selectedIndex]
+                                              .reverse();
+                                        });
+
+                                      player.play(AssetSource(
+                                          'audio/PATINIG/${patinig[index].toUpperCase()}.m4a'));
+                                    }
 
                                     // tts.speak(widget.arguments['label']);
                                   },
