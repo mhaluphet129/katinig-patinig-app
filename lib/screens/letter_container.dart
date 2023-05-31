@@ -16,8 +16,10 @@ class LetterContainer extends StatefulWidget {
 class _LetterContainer extends State<LetterContainer>
     with TickerProviderStateMixin {
   double _scaleTransformValue = 1;
+  double _opacityTransformValue = 0;
   AnimationController? _animationController;
-  late final AnimationController animationController;
+  AnimationController? animationController;
+  AnimationController? animationController2;
 
   @override
   void initState() {
@@ -30,8 +32,24 @@ class _LetterContainer extends State<LetterContainer>
       lowerBound: 0.0,
       upperBound: 0.1,
     )..addListener(() {
-        setState(() => _scaleTransformValue = 1 - animationController.value);
+        setState(() => _scaleTransformValue = 1 - animationController!.value);
       });
+    animationController2 = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+      lowerBound: 0.0,
+      upperBound: 1.0,
+    )..addListener(() {
+        setState(() {
+          if (_opacityTransformValue > 1.0) {
+            animationController2!.stop();
+            _opacityTransformValue = 1.0;
+          } else {
+            _opacityTransformValue = animationController2!.value;
+          }
+        });
+      });
+    ;
     // tts.setStartHandler(() {
     //   _animationController!.forward();
     // });
@@ -40,6 +58,7 @@ class _LetterContainer extends State<LetterContainer>
     // });
     player.onPlayerComplete.listen((e) {
       _animationController!.reverse();
+      animationController2!.forward();
     });
   }
 
@@ -76,11 +95,15 @@ class _LetterContainer extends State<LetterContainer>
                   ),
                 ))
               ])),
-              if (!["A", "E", "I", "O", "U"].contains(label[0]))
-                Image.asset(
-                  'assets/images/$iconPath',
-                  height: 120,
-                  fit: BoxFit.fill,
+              if (!["A", "E", "I", "O", "U"].contains(label[0]) &&
+                  player.state == PlayerState.completed)
+                Opacity(
+                  opacity: _opacityTransformValue,
+                  child: Image.asset(
+                    'assets/images/$iconPath',
+                    height: 120,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               const SizedBox(
                 height: 30,
