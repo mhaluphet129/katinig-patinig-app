@@ -95,8 +95,7 @@ class _LetterContainer extends State<LetterContainer>
                   ),
                 ))
               ])),
-              if (!["A", "E", "I", "O", "U"].contains(label[0]) &&
-                  player.state == PlayerState.completed)
+              if (player.state == PlayerState.completed)
                 Opacity(
                   opacity: _opacityTransformValue,
                   child: Image.asset(
